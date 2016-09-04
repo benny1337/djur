@@ -28,9 +28,17 @@ namespace djur
                         ListAnimals();
                         break;
                     case 4:
+                        GetANewBall();
+                        break;
+                    case 5:
                         return;
                 }
             } while (true);
+        }
+
+        private static void GetANewBall()
+        {
+            PetOwner.Ball = new Ball();
         }
 
         private static void ListAnimals()
@@ -51,7 +59,10 @@ namespace djur
 
         private static void Play(Animal a)
         {
-            a.Interact();
+            if (PetOwner.Ball != null)
+                a.Interact(PetOwner.Ball);
+            else
+                a.Interact();
         }
 
         private static Animal SelectAnimal()
@@ -76,6 +87,7 @@ namespace djur
         {
             PetOwner = new PetOwner()
             {
+                Ball = new Ball(),
                 Age = 12,
                 Animals = new List<Animal>()
                 {
@@ -111,13 +123,14 @@ namespace djur
 1. Play
 2. Feed
 3. List animals
-4. Quit
+4. Get a new ball
+5. Quit
 ");
             var choice = -1;
             do
             {
                 Int32.TryParse(Console.ReadLine().ToString(), out choice);
-                if (choice > 0 && choice < 5)
+                if (choice > 0 && choice < 6)
                 {
                     Console.Clear();
                     return choice;

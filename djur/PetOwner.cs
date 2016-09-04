@@ -10,5 +10,6 @@ namespace djur
     {
         public int Age { get; set; }
         public List<Animal> Animals { get; set; }
+        public Ball Ball { get; set; }
     }
 }

@@ -14,13 +14,13 @@ namespace djur
             ChaseMice();
         }
 
-        public override void Interact()
+        public override void Interact(Ball e = null)
         {
             if (IsHungry)
                 HungryAnimal();
             else
             {
-                Console.WriteLine("halloj");
+                Console.WriteLine("im playing...");
                 FoodStatus--;
             }
         }

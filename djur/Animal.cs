@@ -31,14 +31,31 @@ namespace djur
             Console.WriteLine("nope im hungry, dont you touch me. you little dwarf");
         }
 
-        public virtual void Interact()
+        public virtual void Interact(Ball ball = null)
         {
             if (IsHungry)
                 HungryAnimal();
             else
             {
-                Console.WriteLine("halloj");
-                FoodStatus--;
+                if (ball == null)
+                {
+                    Console.WriteLine("halloj");
+                    FoodStatus--;
+                }
+                else
+                {
+                    if (ball.IsWornOut)
+                    {
+                        Console.WriteLine("i do not like the ball. you idiot");
+                    }
+                    else
+                    {
+                        Console.Write("now im playing with the ball!");
+                        ball.Use();
+                        Console.WriteLine(ball.ToString());
+                        FoodStatus = FoodStatus - 2;
+                    }                    
+                }
             }
         }
 
